@@ -1,6 +1,4 @@
-import React, {useState, useEffect} from 'react';
-import { useDispatch, useSelector } from 'react-redux'
-import { get5LetterWords } from '../actions/words';
+import React, { useState } from 'react';
 import zero from '../images/0.jpg'
 import one from '../images/1.jpg'
 import two from '../images/2.jpg'
@@ -8,14 +6,14 @@ import three from '../images/3.jpg'
 import four from '../images/4.jpg'
 import five from '../images/5.jpg'
 import six from '../images/6.jpg'
+import fiveLetterWords from '../data/fiveLetterWords.json'
 
 let incorrect = 0
 let correct = 0
 let tried = []
+let word = fiveLetterWords.data[Math.floor(Math.random() * fiveLetterWords.data.length)].word.split('')
 
 const Easy = () => {
-    const dispatch = useDispatch()
-    const [words] = useState(null)
     const images = [zero, one, two, three, four, five, six]
     const [index, setIndex] = useState(0)
     const [hint, setHint] = useState(3)
@@ -25,12 +23,7 @@ const Easy = () => {
     const [dash4, setDash4] = useState('_')
     const [dash5, setDash5] = useState('_')
 
-    useEffect(() => { 
-        console.log('dispatching get5LetterWords')
-        dispatch(get5LetterWords())
-    }, [words, dispatch])
-
-    const word = useSelector(state => state.fiveLetterWords)
+    
     console.log(word)
 
     const checkLetter = (e) => {
@@ -106,6 +99,7 @@ const Easy = () => {
         setDash3('_')
         setDash4('_')
         setDash5('_')
+        word = fiveLetterWords.data[Math.floor(Math.random() * fiveLetterWords.data.length)].word.split('')
     }
 
     const getHint = () => {

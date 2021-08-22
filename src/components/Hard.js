@@ -1,6 +1,4 @@
-import React, {useState, useEffect} from 'react';
-import { useDispatch, useSelector } from 'react-redux'
-import { get9LetterWords } from '../actions/words';
+import React, { useState } from 'react';
 import zero from '../images/0.jpg'
 import one from '../images/1.jpg'
 import two from '../images/2.jpg'
@@ -8,14 +6,14 @@ import three from '../images/3.jpg'
 import four from '../images/4.jpg'
 import five from '../images/5.jpg'
 import six from '../images/6.jpg'
+import nineLetterWords from '../data/nineLetterWords.json'
 
 let incorrect = 0
 let correct = 0
 let tried = []
+let word = nineLetterWords.data[Math.floor(Math.random() * nineLetterWords.data.length)].word.split('')
 
 const Hard = () => {
-    const dispatch = useDispatch()
-    const [words] = useState(null)
     const images = [zero, one, two, three, four, five, six]
     const [index, setIndex] = useState(0)
     const [hint, setHint] = useState(3)
@@ -29,11 +27,6 @@ const Hard = () => {
     const [dash8, setDash8] = useState('_')
     const [dash9, setDash9] = useState('_')
 
-    useEffect(() => {
-        dispatch(get9LetterWords())
-    }, [words, dispatch])
-
-    const word = useSelector(state => state.nineLetterWords)
     console.log(word)
 
     const checkLetter = (e) => {
@@ -138,6 +131,7 @@ const Hard = () => {
         setDash7('_')
         setDash8('_')
         setDash9('_')
+        word = nineLetterWords.data[Math.floor(Math.random() * nineLetterWords.data.length)].word.split('')
     }
 
     const getHint = () => {

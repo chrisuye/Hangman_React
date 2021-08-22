@@ -11,7 +11,7 @@ const App = () => {
     <div>
       <Router>
         <Switch>
-          <Route exact path='/' component={Start}/>
+          <Route exact path='/Hangman_React' component={Start}/>
           <Route exact path='/levels' component={Levels}/>
           <Route exact path='/levels/easy' component={Easy}/>
           <Route exact path='/levels/medium' component={Medium}/>

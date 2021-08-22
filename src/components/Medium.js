@@ -1,6 +1,4 @@
-import React, {useState, useEffect} from 'react';
-import { useDispatch, useSelector } from 'react-redux'
-import { get7LetterWords } from '../actions/words';
+import React, { useState } from 'react';
 import zero from '../images/0.jpg'
 import one from '../images/1.jpg'
 import two from '../images/2.jpg'
@@ -8,14 +6,15 @@ import three from '../images/3.jpg'
 import four from '../images/4.jpg'
 import five from '../images/5.jpg'
 import six from '../images/6.jpg'
+import sevenLetterWords from '../data/sevenLetterWords.json'
 
 let incorrect = 0
 let correct = 0
 let tried = []
+let word = sevenLetterWords.data[Math.floor(Math.random() * sevenLetterWords.data.length)].word.split('')
 
 const Medium = () => {
-    const dispatch = useDispatch()
-    const [words] = useState(null)
+    console.log(sevenLetterWords)
     const images = [zero, one, two, three, four, five, six]
     const [index, setIndex] = useState(0)
     const [hint, setHint] = useState(3)
@@ -27,12 +26,7 @@ const Medium = () => {
     const [dash6, setDash6] = useState('_')
     const [dash7, setDash7] = useState('_')
 
-
-    useEffect(() => {
-        dispatch(get7LetterWords())
-    }, [words, dispatch])
-
-    const word = useSelector(state => state.sevenLetterWords)
+    
     console.log(word)
 
     const checkLetter = (e) => {
@@ -122,6 +116,7 @@ const Medium = () => {
         setDash5('_')
         setDash6('_')
         setDash7('_')
+        word = sevenLetterWords.data[Math.floor(Math.random() * sevenLetterWords.data.length)].word.split('')
     }
 
     const getHint = () => {
