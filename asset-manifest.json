@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Hangman_React/static/css/main.702c15b4.chunk.css",
+    "main.js": "/Hangman_React/static/js/main.43a36a26.chunk.js",
+    "main.js.map": "/Hangman_React/static/js/main.43a36a26.chunk.js.map",
+    "runtime-main.js": "/Hangman_React/static/js/runtime-main.be2b80cf.js",
+    "runtime-main.js.map": "/Hangman_React/static/js/runtime-main.be2b80cf.js.map",
+    "static/js/2.eba49512.chunk.js": "/Hangman_React/static/js/2.eba49512.chunk.js",
+    "static/js/2.eba49512.chunk.js.map": "/Hangman_React/static/js/2.eba49512.chunk.js.map",
+    "static/js/3.7b3fcd43.chunk.js": "/Hangman_React/static/js/3.7b3fcd43.chunk.js",
+    "static/js/3.7b3fcd43.chunk.js.map": "/Hangman_React/static/js/3.7b3fcd43.chunk.js.map",
+    "index.html": "/Hangman_React/index.html",
+    "static/css/main.702c15b4.chunk.css.map": "/Hangman_React/static/css/main.702c15b4.chunk.css.map",
+    "static/js/2.eba49512.chunk.js.LICENSE.txt": "/Hangman_React/static/js/2.eba49512.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.be2b80cf.js",
+    "static/js/2.eba49512.chunk.js",
+    "static/css/main.702c15b4.chunk.css",
+    "static/js/main.43a36a26.chunk.js"
+  ]
+}
