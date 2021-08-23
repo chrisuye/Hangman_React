@@ -7,9 +7,11 @@ const Start = () => {
     const history = useHistory();
 
     return (
-        <div>
-            <h1>Hangman</h1>
-            <button onClick={() => history.push('/levels')}>Start</button>
+        <div className='start'>
+            <div className='start-child'>   
+                <h1 className='start'>Hangman</h1>
+                <button className='start' onClick={() => history.push('/levels')}>Start</button>
+            </div>
         </div>
         
     );

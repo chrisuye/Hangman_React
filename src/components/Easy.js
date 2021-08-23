@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getWord } from '../actions/words';
 import zero from '../images/0.jpg'
 import one from '../images/1.jpg'
 import two from '../images/2.jpg'
@@ -10,7 +12,6 @@ import fiveLetterWords from '../data/fiveLetterWords.json'
 
 let incorrect = 0
 let correct = 0
-let tried = []
 let word = fiveLetterWords.data[Math.floor(Math.random() * fiveLetterWords.data.length)].word.split('')
 
 const Easy = () => {
@@ -22,46 +23,58 @@ const Easy = () => {
     const [dash3, setDash3] = useState('_')
     const [dash4, setDash4] = useState('_')
     const [dash5, setDash5] = useState('_')
+    const [done, setDone] = useState(false)
+    const [tried, setTried] = useState('')
+
+    const dispatch = useDispatch()
+    const [search] = useState(null)
+
+    useEffect(() => {
+        dispatch(getWord(word.join('')));
+    }, [search ,  dispatch]);
+
+    const result = useSelector(state => state.search);
+    console.log(result)
 
     
     console.log(word)
 
     const checkLetter = (e) => {
-        let letter = e.target.value
+        let letter = e.target.value.toLowerCase()
         let check = 0
         e.target.value = ''
         console.log(letter)
 
-        if (!tried.includes(letter)) {
-            tried.push(letter)
+        if (tried.indexOf(letter) === -1) {
+            setTried(tried + letter)
 
-            if (word[0] === letter) {
+            if (word[0] === letter && dash1 === '_') {
                 correct++
-                setDash1(letter)
+                setDash1(letter.toUpperCase())
                 check++
                 checkWinLose()
             }
-            if (word[1] === letter) {
+            if (word[1] === letter && dash2 === '_') {
                 correct++
-                setDash2(letter)
+                setDash2(letter.toUpperCase())
                 check++
                 checkWinLose()
             }
-            if (word[2] === letter) {
+            if (word[2] === letter && dash3 === '_') {
                 correct++
-                setDash3(letter)
+                setDash3(letter.toUpperCase())
                 check++
                 checkWinLose()
             }
-            if (word[3] === letter) {
+            if (word[3] === letter && dash4 === '_') {
                 correct++
-                setDash4(letter)
+                setDash4(letter.toUpperCase())
                 check++
                 checkWinLose()
             }
-            if (word[4] === letter) {
+            if (word[4] === letter && dash5 === '_') {
                 correct++
-                setDash5(letter)
+                setDash5(letter.toUpperCase())
                 check++
                 checkWinLose()
             }
@@ -81,17 +94,19 @@ const Easy = () => {
         console.log(correct)
         console.log(incorrect)
         if (incorrect === 6) {
-            alert('You Lose!')
+            setDone(true)
+            alert(`You Lose!`)
         }
         if (correct === 5) {
-            alert('You Win!')
+            setDone(true)
+            alert(`You Win!`)
         }
     }
 
     const reset = () => {
         incorrect = 0
         correct = 0
-        tried = []
+        setTried('')
         setIndex(0)
         setHint(3)
         setDash1('_')
@@ -100,6 +115,7 @@ const Easy = () => {
         setDash4('_')
         setDash5('_')
         word = fiveLetterWords.data[Math.floor(Math.random() * fiveLetterWords.data.length)].word.split('')
+        setDone(false)
     }
 
     const getHint = () => {
@@ -109,7 +125,7 @@ const Easy = () => {
             setHint(hint - 1)
             for (let i = 0; i < dashes.length; i++) {
                 if (dashes[i] === '_') {
-                    setDashes[i](word[i])
+                    setDashes[i](word[i].toUpperCase())
                     correct++
                     checkWinLose()
                     break;
@@ -117,18 +133,33 @@ const Easy = () => {
             }
         }
     }
-    return (
+    return (done) ? (
+        <div>
+            <button className='reset' onClick={() => reset()}>Reset</button>
+            <h2 className='result'>{word.join('').toUpperCase()}</h2>
+            {result.map((item) => {
+                return (
+                    <div>
+                        <p className='result_part'> <strong>Part of speech: </strong> <em>{item.partOfSpeech}</em></p>
+                        {item.definitions.map((definition) => {
+                            return (
+                                <p className='result_def'> <strong>Definition: </strong> <em>{definition.definition}</em> </p>
+                            )
+                        })}
+                    </div>      
+            )})}
+        </div>
+    ): (
         <div className='gameOuter'> 
             <div className='gameInner'>
-                <h1>Easy</h1> 
-                <img src={images[index]} alt="zero" />
+                <img src={images[index]} alt="hangman" />
             </div>
             <div>
-                <button onClick={() => reset()}>Reset</button>
-                <p>{dash1} {dash2} {dash3} {dash4} {dash5}</p>
-                <input type='text' onChange={checkLetter}/>
-                <br/>
-                <button onClick={getHint}>Hint</button>
+                <button className='reset' onClick={() => reset()}>Reset</button>
+                <p className='dash'>{dash1} {dash2} {dash3} {dash4} {dash5}</p>
+                <p className='tired'>[{tried.toUpperCase()}]</p>
+                <input type='text' onChange={checkLetter} maxLength='1' autoFocus/>
+                <button className='hint' onClick={getHint}>Hint {hint}</button>
             </div>
 
         </div>

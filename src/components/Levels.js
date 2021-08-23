@@ -9,13 +9,14 @@ const Levels = () => {
     }
     return (
         <div className="levels">
-            <button onClick={() => {
+            <button className="easy" onClick={() => {
                 handleClick('easy')
             }}>Easy</button>
-            <button onClick={() => {
+            <br/>
+            <button className="medium" onClick={() => {
                 handleClick('medium')
             }}>Medium</button>
-            <button onClick={() => {
+            <button className="hard" onClick={() => {
                 handleClick('hard')
             }}>Hard</button>
         </div>

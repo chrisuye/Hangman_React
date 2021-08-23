@@ -1,3 +1,133 @@
+body {
+    background: #7e7c7c;
+}
+div.start, div.levels {
+    border: 5px solid white;
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    padding: 10px 10px 10px 10px;
+    margin-left: 25%;
+}
+
+button.start {
+    background: transparent;
+    border: none;
+    color: rgb(5, 218, 5);
+    font-size: 1.5em;
+    margin-left: 70px;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+h1.start {
+    font-size: 3em;
+    font-weight: bolder;
+    color: #bebe28;
+    font-family: "Open Sans", sans-serif;
+}
+div.start-child {
+    width: fit-content;
+}
+
+button.easy {
+    background: transparent;
+    border: none;
+    color: rgb(5, 172, 89);
+    font-size: 1.5em;
+    margin-left: 70px;
+    font-weight: bolder;
+    cursor: pointer;
+    margin-left: 0;
+}
+
+button.medium {
+    background: transparent;
+    border: none;
+    color: rgb(251, 255, 6);
+    font-size: 1.5em;
+    margin-left: 70px;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+button.hard {
+    background: transparent;
+    border: none;
+    color: rgb(255, 6, 6);
+    font-size: 1.5em;
+    margin-left: 70px;
+    font-weight: bolder;
+    cursor: pointer;
+}
 div.gameOuter div.gameInner {
     float: left;
+}
+
+input {
+    border: 2px solid #1100ff;
+    border-radius: 5px;
+    width: 10px;
+    padding: 3px;
+    margin: 3px;
+    font-size: 1em;
+}
+
+button.hint {
+    background: transparent;
+    border: none;
+    border-radius: 5px;
+    color: rgb(6, 23, 255);
+    background-color: white;
+    font-size: 1.2em;
+    margin-left: 10px;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+p.result {
+    font-size: 1.5em;
+}
+
+p.dash {
+    font-size: 1.5em;
+    color: white;
+    font-weight: bolder;
+}
+
+p.tired {
+    font-size: 1.2em;
+    color: rgb(187, 187, 187);
+    font-weight: bold;
+}
+
+h2.result {
+    font-size: 1.5em;
+    font-weight: bolder;
+    color: white;
+    margin-left: 10px;
+}
+
+p.result_part {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    margin-left: 15px;
+}
+
+p.result_def {
+    font-size: 1em;
+    font-weight: bold;
+    color: white;
+    margin-left: 20px;
+}
+
+button.reset {
+    background: rgba(255, 0, 0, 0.336);
+    border: 2px solid red;
+    border-radius: 5px;
+    color: white;
+    font-size: .9em;
+    font-weight: bolder;
+    cursor: pointer;
 }

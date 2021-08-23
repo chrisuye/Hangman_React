@@ -39,3 +39,15 @@ export const get9LetterWords = () => async (dispatch) => {
         console.log(error);
     }
 }
+
+export const getWord = (word) => async (dispatch) => {
+    try {
+        const { data } = await api.getWord(word);
+        dispatch({
+            type: actions.GETWORD,
+            payload: data
+        });
+    } catch (error) {
+        console.log(error);
+    }
+}
